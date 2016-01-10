@@ -46,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         /**
          * 以下Drawer
          */
@@ -96,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // XMLを読込んで表示する
-        drawer_adapter = new DrawerAdapter(drawerMenuArr);
+        drawer_adapter = new DrawerAdapter(drawerMenuArr, getApplicationContext());
 
         recycler_view.setAdapter(drawer_adapter);
 
@@ -116,13 +125,13 @@ public class MainActivity extends AppCompatActivity {
 
                     // onSingleTapUpの時に、タッチしているViewを取得
                     View childView = view.findChildViewUnder(e.getX(), e.getY());
-                    int potision = recycler_view.getChildPosition(childView);
+                    int position = recycler_view.getChildPosition(childView);
 
                     // タッチしているViewのデータを取得
-                    HashMap<String, Object> data = drawerMenuArr.get(potision);
+                    HashMap<String, Object> data = drawerMenuArr.get(position);
 
                     // Menu アイテムのみ
-                    if (data.get("text").toString().equals("My History")) {
+                    if (data.get("text").toString().equals("About")) {
                         // ドロワー閉じる
                         drawer_layout.closeDrawers();
 //                        startActivity(new Intent(getApplicationContext(), MyPlaylistActivity.class));
@@ -149,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
 //                return R.id.toolbar;
 //            }
 //        };
-
     }
 
     @OnClick({R.id.btn_card_mode, R.id.btn_reader_mode})

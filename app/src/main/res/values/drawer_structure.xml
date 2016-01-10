@@ -5,6 +5,10 @@
         <item name="key">type</item>
         <item name="value">menu</item>
     </array>
+    <array name="type_menu_hide">
+        <item name="key">type</item>
+        <item name="value">menu_hide</item>
+    </array>
     <array name="type_header">
         <item name="key">type</item>
         <item name="value">header</item>
@@ -12,6 +16,10 @@
     <array name="type_category">
         <item name="key">type</item>
         <item name="value">category</item>
+    </array>
+    <array name="type_card_id">
+        <item name="key">type</item>
+        <item name="value">card_id</item>
     </array>
     <array name="type_transparent">
         <item name="key">type</item>
@@ -23,6 +31,10 @@
         <item name="key">icon</item>
         <item name="value">@drawable/menu_header</item>
     </array>
+    <array name="category_text_0">
+        <item name="key">text</item>
+        <item name="value">Your Card ID</item>
+    </array>
     <array name="category_text_1">
         <item name="key">text</item>
         <item name="value">Menu</item>
@@ -33,19 +45,19 @@
     </array>
     <array name="menu_icon">
         <item name="key">icon</item>
-        <item name="value">@mipmap/ic_launcher</item>
+        <item name="value">@drawable/ic_launcher2</item>
     </array>
     <array name="menu_text_1">
         <item name="key">text</item>
-        <item name="value">NowPlaying</item>
+        <item name="value">How to Use</item>
     </array>
     <array name="menu_text_2">
         <item name="key">text</item>
-        <item name="value">Recommendation</item>
+        <item name="value">Card Mode</item>
     </array>
     <array name="menu_text_3">
         <item name="key">text</item>
-        <item name="value">My History</item>
+        <item name="value">Reader Mode</item>
     </array>
     <array name="menu_text_4">
         <item name="key">text</item>
@@ -54,6 +66,14 @@
     <array name="menu_text_5">
         <item name="key">text</item>
         <item name="value">About</item>
+    </array>
+    <array name="menu_text_6">
+        <item name="key">text</item>
+        <item name="value">Get Your Card ID</item>
+    </array>
+    <array name="card_id">
+        <item name="key">text</item>
+        <item name="value">Loyalty ID here</item>
     </array>
 
     <!-- アイテム内の構造 item -->
@@ -82,6 +102,14 @@
         <!--<item>@array/menu_icon</item>-->
         <item>@array/menu_text_5</item>
     </array>
+    <array name="menu6">
+        <item>@array/type_menu_hide</item>
+        <item>@array/menu_text_6</item>
+    </array>
+    <array name="category0">
+        <item>@array/type_category</item>
+        <item>@array/category_text_0</item>
+    </array>
     <array name="category1">
         <item>@array/type_category</item>
         <item>@array/category_text_1</item>
@@ -94,14 +122,23 @@
         <item>@array/type_header</item>
         <item>@array/header_image</item>
     </array>
+    <array name="card">
+        <item>@array/type_card_id</item>
+        <item>@array/menu_icon</item>
+        <item>@array/card_id</item>
+    </array>
     <array name="transparent">
         <item>@array/type_transparent</item>
     </array>
 
 
+
     <!-- ドロワーの全体構造 menu -->
     <array name="drawer_menu_list">
         <item>@array/header1</item>
+        <item>@array/category0</item>
+        <item>@array/card</item>
+        <item>@array/menu6</item>
         <item>@array/category1</item>
         <item>@array/menu1</item>
         <item>@array/menu2</item>

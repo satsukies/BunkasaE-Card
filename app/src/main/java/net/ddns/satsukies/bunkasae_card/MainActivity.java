@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.btn_reader_mode)
     ImageButton btn_mode_reader;
 
+    /**
+     * Drawer用Variable
+     */
     DrawerLayout drawer_layout;
     ActionBarDrawerToggle drawer_toggle;
 
@@ -45,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-
-
 
 
     }
@@ -118,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+        /**
+         * Drawer内のタッチイベントの定義部分
+         */
         recycler_view.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
@@ -130,13 +134,36 @@ public class MainActivity extends AppCompatActivity {
                     // タッチしているViewのデータを取得
                     HashMap<String, Object> data = drawerMenuArr.get(position);
 
-                    // Menu アイテムのみ
-                    if (data.get("text").toString().equals("About")) {
-                        // ドロワー閉じる
-                        drawer_layout.closeDrawers();
-//                        startActivity(new Intent(getApplicationContext(), MyPlaylistActivity.class));
+                    String menu_label = data.get("text").toString();
 
+                    // Menu アイテムのみ
+                    if (menu_label.equals("About")) {
+//                        startActivity(new Intent(getApplicationContext(), JUMP.class));
+                        drawer_layout.closeDrawers();
                         return true;
+                    }
+
+                    if (menu_label.equals("Get Your Card ID")) {
+                        startActivity(new Intent(getApplicationContext(), CardActivity.class));
+                        drawer_layout.closeDrawers();
+                        return true;
+                    }
+
+                    if (menu_label.equals("Card Mode")) {
+                        startActivity(new Intent(getApplicationContext(), CardActivity.class));
+                        drawer_layout.closeDrawers();
+                        return true;
+                    }
+
+                    if (menu_label.equals("Reader Mode")) {
+                        startActivity(new Intent(getApplicationContext(), ReaderActivity.class));
+                        drawer_layout.closeDrawers();
+                        return true;
+                    }
+
+                    if (menu_label.equals("How to Use")) {
+//                        startActivity(new Intent(getApplicationContext(), JUMP.class));
+                        drawer_layout.closeDrawers();
                     }
                 }
                 return false;
@@ -161,8 +188,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.btn_card_mode, R.id.btn_reader_mode})
-    protected void selectMode(View v){
-        switch (v.getId()){
+    protected void selectMode(View v) {
+        switch (v.getId()) {
             case R.id.btn_card_mode:
                 startActivity(new Intent(MainActivity.this, CardActivity.class));
                 break;

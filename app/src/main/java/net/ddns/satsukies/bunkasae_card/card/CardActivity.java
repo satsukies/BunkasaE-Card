@@ -12,13 +12,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import net.ddns.satsukies.bunkasae_card.BusHolder;
+import net.ddns.satsukies.bunkasae_card.ButtonClickEvent;
 import net.ddns.satsukies.bunkasae_card.DrawerAdapter;
 import net.ddns.satsukies.bunkasae_card.R;
 import net.ddns.satsukies.bunkasae_card.reader.ReaderActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CardActivity extends AppCompatActivity {
 
@@ -32,10 +40,18 @@ public class CardActivity extends AppCompatActivity {
     RecyclerView recycler_view;
     DrawerAdapter drawer_adapter;
 
+    @Bind(R.id.btn_num1)
+    Button btn_num1;
+
+    @Bind(R.id.btn_num2)
+    Button btn_num2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
+
+        ButterKnife.bind(this);
 
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -43,6 +59,11 @@ public class CardActivity extends AppCompatActivity {
             transaction.replace(R.id.sample_content_fragment_card, fragment);
             transaction.commit();
         }
+    }
+
+    @OnClick({R.id.btn_num1, R.id.btn_num2})
+    public void clickBtn(View v){
+        BusHolder.get().post(new ButtonClickEvent(((TextView)v).getText().toString()));
     }
 
     @Override

@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.squareup.otto.Subscribe;
+
+import net.ddns.satsukies.bunkasae_card.BusHolder;
+import net.ddns.satsukies.bunkasae_card.ButtonClickEvent;
 import net.ddns.satsukies.bunkasae_card.R;
 
 /**
@@ -18,7 +22,11 @@ public class CardFragment extends Fragment {
 
     public static final String TAG = "CardEmulationFragment";
 
-    /** Called when sample is created. Displays generic UI with welcome text. */
+    EditText account;
+
+    /**
+     * Called when sample is created. Displays generic UI with welcome text.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +37,29 @@ public class CardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_card, container, false);
-        EditText account = (EditText) v.findViewById(R.id.card_account_field);
+        account = (EditText) v.findViewById(R.id.card_account_field);
         account.setText(AccountStorage.GetAccount(getActivity()));
         account.addTextChangedListener(new AccountUpdater());
         return v;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        BusHolder.get().register(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        BusHolder.get().unregister(this);
+    }
+
+    @Subscribe
+    public void subscribe(ButtonClickEvent e){
+        //When this method is called, TextWatcher will work and update account number
+        account.setText(e.message);
+    }
 
     private class AccountUpdater implements TextWatcher {
         @Override

@@ -134,36 +134,43 @@ public class MainActivity extends AppCompatActivity {
                     // タッチしているViewのデータを取得
                     HashMap<String, Object> data = drawerMenuArr.get(position);
 
-                    String menu_label = data.get("text").toString();
+                    try {
 
-                    // Menu アイテムのみ
-                    if (menu_label.equals("About")) {
+                        String menu_label = data.get("text").toString();
+
+                        // Menu アイテムのみ
+                        if (menu_label.equals("About")) {
 //                        startActivity(new Intent(getApplicationContext(), JUMP.class));
-                        drawer_layout.closeDrawers();
-                        return true;
-                    }
+                            drawer_layout.closeDrawers();
+                            return true;
+                        }
 
-                    if (menu_label.equals("Get Your Card ID")) {
-                        startActivity(new Intent(getApplicationContext(), CardActivity.class));
-                        drawer_layout.closeDrawers();
-                        return true;
-                    }
+                        if (menu_label.equals("Get Your Card ID")) {
+                            startActivity(new Intent(getApplicationContext(), CardActivity.class));
+                            drawer_layout.closeDrawers();
+                            return true;
+                        }
 
-                    if (menu_label.equals("Card Mode")) {
-                        startActivity(new Intent(getApplicationContext(), CardActivity.class));
-                        drawer_layout.closeDrawers();
-                        return true;
-                    }
+                        if (menu_label.equals("Card Mode")) {
+                            startActivity(new Intent(getApplicationContext(), CardActivity.class));
+                            drawer_layout.closeDrawers();
+                            return true;
+                        }
 
-                    if (menu_label.equals("Reader Mode")) {
-                        startActivity(new Intent(getApplicationContext(), ReaderActivity.class));
-                        drawer_layout.closeDrawers();
-                        return true;
-                    }
+                        if (menu_label.equals("Reader Mode")) {
+                            startActivity(new Intent(getApplicationContext(), ReaderActivity.class));
+                            drawer_layout.closeDrawers();
+                            return true;
+                        }
 
-                    if (menu_label.equals("How to Use")) {
+                        if (menu_label.equals("How to Use")) {
 //                        startActivity(new Intent(getApplicationContext(), JUMP.class));
-                        drawer_layout.closeDrawers();
+                            drawer_layout.closeDrawers();
+                        }
+
+                    }catch (NullPointerException exp){
+                        exp.printStackTrace();
+                        return false;
                     }
                 }
                 return false;

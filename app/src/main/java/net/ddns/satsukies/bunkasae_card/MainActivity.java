@@ -164,11 +164,18 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         if (menu_label.equals("How to Use")) {
-//                        startActivity(new Intent(getApplicationContext(), JUMP.class));
+                            startActivity(new Intent(getApplicationContext(), BLEActivity.class));
                             drawer_layout.closeDrawers();
                         }
 
-                    }catch (NullPointerException exp){
+                        if (menu_label.equals("Settings")) {
+                            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                            drawer_layout.closeDrawers();
+                            return true;
+                        }
+
+
+                    } catch (NullPointerException exp) {
                         exp.printStackTrace();
                         return false;
                     }

@@ -4,6 +4,7 @@
     <string name="account_number">Account Number</string>
     <string name="service_name">CardEmulation Sample</string>
 
-    <string name="api_get">http://satsukies.ddns.net/api/get.php</string>
-    <string name="api_update">http://satsukies.ddns.net/api/update.php</string>
+    <string name="api_get">http://satsukies.ddns.net/api/v1/get.php</string>
+    <string name="api_update">http://satsukies.ddns.net/api/v1/update.php</string>
+    <string name="api_insert">http://satsukies.ddns.net/api/v1/insert.php</string>
 </resources>

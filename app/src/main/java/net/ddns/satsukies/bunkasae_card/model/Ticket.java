@@ -11,6 +11,12 @@ public class Ticket {
 
     long id;
     String ticket_id;
+    String owner;
+    String used;
+
+    //hidden values
+    String date;
+    String auth_value;
 
     public Ticket(JSONObject obj){
         row = obj;

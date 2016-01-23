@@ -30,6 +30,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import net.ddns.satsukies.bunkasae_card.R;
+import net.ddns.satsukies.bunkasae_card.api.GetAsyncTask;
+import net.ddns.satsukies.bunkasae_card.api.UpdateAsyncTask;
 
 /**
  * Generic UI for sample discovery.
@@ -109,5 +111,8 @@ public class CardReaderFragment extends Fragment implements LoyaltyCardReader.Ac
                 mAccountField.setText(account);
             }
         });
-    }
+
+        new UpdateAsyncTask(getActivity()).execute("changed owner",account, "hoge");
+//        new GetAsyncTask(getActivity()).execute();
+        }
 }

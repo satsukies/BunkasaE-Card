@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import net.ddns.satsukies.bunkasae_card.card.CardActivity;
+import net.ddns.satsukies.bunkasae_card.model.Ticket;
 import net.ddns.satsukies.bunkasae_card.reader.ReaderActivity;
 
 import java.util.ArrayList;
@@ -164,7 +165,8 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         if (menu_label.equals("How to Use")) {
-                            startActivity(new Intent(getApplicationContext(), BLEActivity.class));
+//                            startActivity(new Intent(getApplicationContext(), BLEActivity.class));
+                            startActivity(new Intent(getApplicationContext(), TicketActivity.class));
                             drawer_layout.closeDrawers();
                         }
 

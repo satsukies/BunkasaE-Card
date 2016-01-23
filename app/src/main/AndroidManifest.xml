@@ -68,6 +68,10 @@
             android:label="Settings"
             android:theme="@style/SettingTheme" />
         <activity android:name=".BLEActivity" />
+        <activity
+            android:name=".TicketActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.ActionBar"></activity>
     </application>
 
 </manifest>

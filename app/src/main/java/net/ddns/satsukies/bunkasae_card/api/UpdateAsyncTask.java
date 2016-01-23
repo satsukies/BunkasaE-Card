@@ -2,6 +2,7 @@ package net.ddns.satsukies.bunkasae_card.api;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import net.ddns.satsukies.bunkasae_card.R;
 
@@ -17,11 +18,11 @@ import java.net.URL;
 /**
  * Created by satsukies on 16/01/23.
  */
-public class GetAsyncTask extends AsyncTask<Void, Void, String> {
+public class UpdateAsyncTask extends AsyncTask<String, Void, String> {
 
-    Context context;
+    private Context context;
 
-    public GetAsyncTask(Context c) {
+    public UpdateAsyncTask(Context c) {
         context = c;
     }
 
@@ -30,17 +31,32 @@ public class GetAsyncTask extends AsyncTask<Void, Void, String> {
         super.onPreExecute();
     }
 
+    /**
+     * 引数の情報をもとにDBからチケットのリストを引いてくる。
+     *
+     * @param params 1st:owner, 2nd:id, 3rd:auth_key
+     * @return
+     */
     @Override
-    protected String doInBackground(Void... params) {
+    protected String doInBackground(String... params) {
 
         HttpURLConnection connect = null;
         URL url = null;
-        String apiUpdate = context.getResources().getString(R.string.api_get);
+        String apiUpdate = context.getResources().getString(R.string.api_update);
+
+        //validate
+        if (params.length != 3) {
+            Log.e("NETWORK", "Error: Arguments length must be 3.");
+            return null;
+        }
+
+        //URL construction
+        String constructedUrl = apiUpdate + "?owner=" + params[0] + "&id=" + params[1] + "&auth=" + params[2];
 
         InputStream stream = null;
 
         try {
-            url = new URL(apiUpdate);
+            url = new URL(constructedUrl);
 
             connect = (HttpURLConnection) url.openConnection();
 
@@ -55,18 +71,14 @@ public class GetAsyncTask extends AsyncTask<Void, Void, String> {
             connect.connect();
 
             stream = connect.getInputStream();
-            try {
-                String s = NetworkUtil.getHttpMain(stream);
-                JSONArray json = new JSONArray(s);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            String s = NetworkUtil.getHttpMain(stream);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         return null;
     }

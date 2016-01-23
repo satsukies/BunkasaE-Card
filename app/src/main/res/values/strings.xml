@@ -3,4 +3,6 @@
     <string name="card_title">Sample Loyalty Card</string>
     <string name="account_number">Account Number</string>
     <string name="service_name">CardEmulation Sample</string>
+
+    <string name="api_update">http://satsukies.ddns.net/down.php</string>
 </resources>

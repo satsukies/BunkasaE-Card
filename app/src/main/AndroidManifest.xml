@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.ddns.satsukies.bunkasae_card">
 
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
     <uses-permission android:name="android.permission.NFC" />
 
     <uses-feature
@@ -12,10 +18,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher2"
         android:label="@string/app_name"
-
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".SplashActivity"
             android:hardwareAccelerated="false"
@@ -27,15 +31,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask" />
-
         <activity
             android:name=".AboutActivity"
             android:launchMode="singleTask" />
-
         <activity
             android:name=".reader.ReaderActivity"
             android:launchMode="singleTask" />
@@ -62,5 +63,12 @@
                 android:name="android.nfc.cardemulation.host_apdu_service"
                 android:resource="@xml/aid_list" />
         </service>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings"
+            android:theme="@style/SettingTheme" />
+        <activity android:name=".BLEActivity"></activity>
     </application>
+
 </manifest>

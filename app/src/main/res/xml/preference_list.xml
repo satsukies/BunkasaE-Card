@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="General">
+
+        <ListPreference
+            android:key="pref_language"
+            android:title="Language"
+            android:entries="@array/pref_language"
+            android:entryValues="@array/pref_language_value" />
+        
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_test1"
+            android:summaryOff="Don't start automatically"
+            android:summaryOn="Start automatically"
+            android:title="Enable XXXX" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="About">
+
+        <PreferenceScreen
+            android:title="Open source licenses"
+            android:summary="License detail for open source software">
+
+            <!-- 使用しているライブラリをここに列挙する -->
+            <Preference
+                android:summary="Jake Wharton"
+                android:title="ButterKnife:7.0.1" />
+            <Preference
+                android:summary="Square Inc."
+                android:title="Otto:1.3.8" />
+            <Preference
+                android:summary="Google Inc."
+                android:title="Support Library v7" />
+
+        </PreferenceScreen>
+
+        <Preference
+            android:summary="Version: beta"
+            android:title="Build version" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

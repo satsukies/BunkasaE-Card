@@ -43,6 +43,10 @@
         <item name="key">text</item>
         <item name="value">Settings</item>
     </array>
+    <array name="category_text_3">
+        <item name="key">text</item>
+        <item name="value">For SuperUser</item>
+    </array>
     <array name="menu_icon">
         <item name="key">icon</item>
         <item name="value">@drawable/ic_launcher2</item>
@@ -71,6 +75,18 @@
         <item name="key">text</item>
         <item name="value">Get Your Card ID</item>
     </array>
+    <array name="menu_text_7">
+        <item name="key">text</item>
+        <item name="value">Tickets</item>
+    </array>
+    <array name="menu_text_8">
+        <item name="key">text</item>
+        <item name="value">Generate Tickets</item>
+    </array>
+    <!--<array name="menu_text_9">-->
+        <!--<item name="key">text</item>-->
+        <!--<item name="value">Get Your Card ID</item>-->
+    <!--</array>-->
     <array name="card_id">
         <item name="key">text</item>
         <item name="value">Loyalty ID here</item>
@@ -106,6 +122,18 @@
         <item>@array/type_menu_hide</item>
         <item>@array/menu_text_6</item>
     </array>
+    <array name="menu7">
+        <item>@array/type_menu</item>
+        <item>@array/menu_text_7</item>
+    </array>
+    <array name="menu8">
+        <item>@array/type_menu</item>
+        <item>@array/menu_text_8</item>
+    </array>
+    <!--<array name="menu8">-->
+        <!--<item>@array/type_menu_hide</item>-->
+        <!--<item>@array/menu_text_6</item>-->
+    <!--</array>-->
     <array name="category0">
         <item>@array/type_category</item>
         <item>@array/category_text_0</item>
@@ -117,6 +145,10 @@
     <array name="category2">
         <item>@array/type_category</item>
         <item>@array/category_text_2</item>
+    </array>
+    <array name="category3">
+        <item>@array/type_category</item>
+        <item>@array/category_text_3</item>
     </array>
     <array name="header1">
         <item>@array/type_header</item>
@@ -143,6 +175,9 @@
         <item>@array/menu1</item>
         <item>@array/menu2</item>
         <item>@array/menu3</item>
+        <item>@array/menu7</item>
+        <item>@array/category3</item>
+        <item>@array/menu8</item>
         <item>@array/category2</item>
         <item>@array/menu4</item>
         <item>@array/menu5</item>

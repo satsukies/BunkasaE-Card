@@ -14,13 +14,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by satsukies on 16/01/23.
+ * Created by satsukies on 16/01/24.
  */
-public class UpdateAsyncTask extends AsyncTask<String, Void, String> {
+public class GenerateAsyncTask extends AsyncTask<String, Void, String> {
 
-    private Context context;
+    Context context;
 
-    public UpdateAsyncTask(Context c) {
+    public GenerateAsyncTask(Context c){
         context = c;
     }
 
@@ -30,17 +30,15 @@ public class UpdateAsyncTask extends AsyncTask<String, Void, String> {
     }
 
     /**
-     * 引数の情報をもとにDBからチケットのリストを引いてくる。
      *
-     * @param params 1st:owner, 2nd:id, 3rd:auth_key
+     * @param params 1st: owner, 2nd:auth_value, 3rd:qty
      * @return
      */
     @Override
     protected String doInBackground(String... params) {
-
         HttpURLConnection connect = null;
         URL url = null;
-        String apiUpdate = context.getResources().getString(R.string.api_update);
+        String apiGenerate = context.getResources().getString(R.string.api_generate);
 
         //validate
         if (params.length != 3) {
@@ -49,7 +47,7 @@ public class UpdateAsyncTask extends AsyncTask<String, Void, String> {
         }
 
         //URL construction
-        String constructedUrl = apiUpdate + "?owner=" + params[0] + "&id=" + params[1] + "&auth=" + params[2];
+        String constructedUrl = apiGenerate + "?owner=" + params[0] + "&auth=" + params[1] + "&qty=" + params[2];
 
         InputStream stream = null;
 
@@ -76,7 +74,6 @@ public class UpdateAsyncTask extends AsyncTask<String, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return null;
     }

@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import net.ddns.satsukies.bunkasae_card.card.CardActivity;
 import net.ddns.satsukies.bunkasae_card.model.Ticket;
 import net.ddns.satsukies.bunkasae_card.reader.ReaderActivity;
+import net.ddns.satsukies.bunkasae_card.util.DrawerUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-
-
     }
 
     @Override
@@ -136,58 +135,26 @@ public class MainActivity extends AppCompatActivity {
                     HashMap<String, Object> data = drawerMenuArr.get(position);
 
                     try {
+                        Intent drawerIntent;
 
-                        String menu_label = data.get("text").toString();
-
-                        // Menu アイテムのみ
-                        if (menu_label.equals("About")) {
-//                        startActivity(new Intent(getApplicationContext(), JUMP.class));
-                            drawer_layout.closeDrawers();
-                            return true;
+                        if((drawerIntent = DrawerUtil.generateDrawerMenuIntent(getApplicationContext(), data.get("text").toString())) != null){
+                            startActivity(drawerIntent);
                         }
 
-                        if (menu_label.equals("Get Your Card ID")) {
-                            startActivity(new Intent(getApplicationContext(), CardActivity.class));
-                            drawer_layout.closeDrawers();
-                            return true;
-                        }
-
-                        if (menu_label.equals("Card Mode")) {
-                            startActivity(new Intent(getApplicationContext(), CardActivity.class));
-                            drawer_layout.closeDrawers();
-                            return true;
-                        }
-
-                        if (menu_label.equals("Reader Mode")) {
-                            startActivity(new Intent(getApplicationContext(), ReaderActivity.class));
-                            drawer_layout.closeDrawers();
-                            return true;
-                        }
-
-                        if (menu_label.equals("How to Use")) {
-//                            startActivity(new Intent(getApplicationContext(), BLEActivity.class));
-                            startActivity(new Intent(getApplicationContext(), TicketActivity.class));
-                            drawer_layout.closeDrawers();
-                        }
-
-                        if (menu_label.equals("Settings")) {
-                            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-                            drawer_layout.closeDrawers();
-                            return true;
-                        }
-
+                        drawer_layout.closeDrawers();
+                        return  true;
 
                     } catch (NullPointerException exp) {
                         exp.printStackTrace();
                         return false;
                     }
                 }
+
                 return false;
             }
 
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean b) {
-
             }
 
             @Override

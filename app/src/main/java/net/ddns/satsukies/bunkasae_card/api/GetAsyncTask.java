@@ -8,6 +8,7 @@ import android.util.Log;
 import net.ddns.satsukies.bunkasae_card.AsyncHolder;
 import net.ddns.satsukies.bunkasae_card.R;
 import net.ddns.satsukies.bunkasae_card.card.AccountStorage;
+import net.ddns.satsukies.bunkasae_card.util.NetworkUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -112,7 +112,7 @@ public class CardReaderFragment extends Fragment implements LoyaltyCardReader.Ac
             }
         });
 
-        new UpdateAsyncTask(getActivity()).execute("changed owner",account, "hoge");
+        new UpdateAsyncTask(getActivity()).execute(account, "gtXXe55CAtYkFeP0zwCw", "hoge");
 //        new GetAsyncTask(getActivity()).execute();
         }
 }

@@ -1,4 +1,4 @@
-package net.ddns.satsukies.bunkasae_card.api;
+package net.ddns.satsukies.bunkasae_card.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.io.UnsupportedEncodingException;
  * Created by satsukies on 16/01/23.
  */
 public class NetworkUtil {
-    static String getHttpMain(InputStream in) throws IOException, UnsupportedEncodingException {
+    public static String getHttpMain(InputStream in) throws IOException, UnsupportedEncodingException {
         StringBuffer sBuffer = new StringBuffer();
         String st = "";
 

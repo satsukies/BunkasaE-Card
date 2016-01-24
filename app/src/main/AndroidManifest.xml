@@ -70,8 +70,14 @@
         <activity android:name=".BLEActivity" />
         <activity
             android:name=".TicketActivity"
+            android:label="Tickets"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.ActionBar"></activity>
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".GenerateTicketActivity"
+            android:label="Generate Tickets"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.ActionBar" />
     </application>
 
 </manifest>

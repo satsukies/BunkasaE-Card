@@ -9,10 +9,10 @@ import com.squareup.otto.Subscribe;
 
 import net.ddns.satsukies.bunkasae_card.api.GetAsyncTask;
 import net.ddns.satsukies.bunkasae_card.model.Ticket;
+import net.ddns.satsukies.bunkasae_card.pubsub.AsyncBus;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -61,12 +61,12 @@ public class TicketActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AsyncHolder.get().register(this);
+        AsyncBus.get().register(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        AsyncHolder.get().unregister(this);
+        AsyncBus.get().unregister(this);
     }
 }

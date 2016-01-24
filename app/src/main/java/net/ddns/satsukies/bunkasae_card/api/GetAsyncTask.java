@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
-import net.ddns.satsukies.bunkasae_card.AsyncHolder;
+import net.ddns.satsukies.bunkasae_card.pubsub.AsyncBus;
 import net.ddns.satsukies.bunkasae_card.R;
 import net.ddns.satsukies.bunkasae_card.card.AccountStorage;
 import net.ddns.satsukies.bunkasae_card.util.NetworkUtil;
@@ -80,7 +80,7 @@ public class GetAsyncTask extends AsyncTask<Handler, Void, JSONArray> {
                     params[0].post(new Runnable() {
                         @Override
                         public void run() {
-                            AsyncHolder.get().post(json);
+                            AsyncBus.get().post(json);
                         }
                     });
                 }
@@ -116,13 +116,13 @@ public class GetAsyncTask extends AsyncTask<Handler, Void, JSONArray> {
                 try {
                     switch (flag) {
                         case FLAG_ACCOUNT_NOT_INITIALISED:
-                            AsyncHolder.get().post(new JSONArray("[{'owner':'null', 'id': 'Account is not initialised', 'auth_value': 'null', 'used': 0}]"));
+                            AsyncBus.get().post(new JSONArray("[{'owner':'null', 'id': 'Account is not initialised', 'auth_value': 'null', 'used': 0}]"));
                             break;
                         case FLAG_RESULT_EMPTY:
-                            AsyncHolder.get().post(new JSONArray("[{'owner':'null', 'id': 'Ticket not found', 'auth_value': 'null', 'used': 0}]"));
+                            AsyncBus.get().post(new JSONArray("[{'owner':'null', 'id': 'Ticket not found', 'auth_value': 'null', 'used': 0}]"));
                             break;
                         default:
-                            AsyncHolder.get().post(new JSONArray("[{'owner':'null', 'id': 'Unknown internal error', 'auth_value': 'null', 'used': 0}]"));
+                            AsyncBus.get().post(new JSONArray("[{'owner':'null', 'id': 'Unknown internal error', 'auth_value': 'null', 'used': 0}]"));
                             break;
                     }
                 } catch (JSONException e) {

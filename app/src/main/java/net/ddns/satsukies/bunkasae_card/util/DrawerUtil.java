@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import net.ddns.satsukies.bunkasae_card.BLEActivity;
+import net.ddns.satsukies.bunkasae_card.GenerateTicketActivity;
 import net.ddns.satsukies.bunkasae_card.SettingsActivity;
 import net.ddns.satsukies.bunkasae_card.TicketActivity;
 import net.ddns.satsukies.bunkasae_card.card.CardActivity;
@@ -47,7 +48,7 @@ public class DrawerUtil {
             }
 
             if(menu_label.equals("Generate Tickets")){
-//                return new Intent(context, GenerateActivity.class);
+                return new Intent(context, GenerateTicketActivity.class);
             }
 
 

@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import com.squareup.otto.Subscribe;
 
-import net.ddns.satsukies.bunkasae_card.BusHolder;
+import net.ddns.satsukies.bunkasae_card.pubsub.CardBus;
 import net.ddns.satsukies.bunkasae_card.ButtonClickEvent;
 import net.ddns.satsukies.bunkasae_card.R;
 
@@ -46,13 +46,13 @@ public class CardFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        BusHolder.get().register(this);
+        CardBus.get().register(this);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        BusHolder.get().unregister(this);
+        CardBus.get().unregister(this);
     }
 
     @Subscribe

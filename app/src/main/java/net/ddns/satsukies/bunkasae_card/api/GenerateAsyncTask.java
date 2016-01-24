@@ -2,9 +2,11 @@ package net.ddns.satsukies.bunkasae_card.api;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.util.Log;
 
 import net.ddns.satsukies.bunkasae_card.R;
+import net.ddns.satsukies.bunkasae_card.pubsub.AsyncBus;
 import net.ddns.satsukies.bunkasae_card.util.NetworkUtil;
 
 import java.io.IOException;
@@ -19,9 +21,11 @@ import java.net.URL;
 public class GenerateAsyncTask extends AsyncTask<String, Void, String> {
 
     Context context;
+    Handler handler;
 
-    public GenerateAsyncTask(Context c){
+    public GenerateAsyncTask(Context c, Handler h) {
         context = c;
+        handler = h;
     }
 
     @Override
@@ -30,7 +34,6 @@ public class GenerateAsyncTask extends AsyncTask<String, Void, String> {
     }
 
     /**
-     *
      * @param params 1st: owner, 2nd:auth_value, 3rd:qty
      * @return
      */
@@ -51,6 +54,8 @@ public class GenerateAsyncTask extends AsyncTask<String, Void, String> {
 
         InputStream stream = null;
 
+        Log.d("debug", constructedUrl);
+
         try {
             url = new URL(constructedUrl);
 
@@ -67,8 +72,14 @@ public class GenerateAsyncTask extends AsyncTask<String, Void, String> {
             connect.connect();
 
             stream = connect.getInputStream();
-            String s = NetworkUtil.getHttpMain(stream);
+            final String s = NetworkUtil.getHttpMain(stream);
 
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    AsyncBus.get().post(s);
+                }
+            });
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
